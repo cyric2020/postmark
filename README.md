@@ -7,6 +7,8 @@ A GFM inspired Markdown parser for Node.JS.
 npm install cyric2020/postmark
 ```
 
+To make Postmark work properly you need to include the `style.css` file in the head of the page.
+
 ## Usage
 ```js
 const postmark = require('postmark');

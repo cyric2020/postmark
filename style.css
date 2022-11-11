@@ -4,6 +4,8 @@
     --color-code-bg: #f5f5f5;
     --color-code-border: #e5e5e5;
     --color-code-inline: #e9c46a;
+    --color-table-bg: #f5f5f5;
+    --color-table-border: #e5e5e5;
 }
 
 *, *::before, *::after{
@@ -13,6 +15,11 @@
 pre > code {
     padding: 0.3em 0.5em !important;
     width: 100%;
+    background-color: var(--color-code-bg) !important;
+    border-radius: 0.3em;
+    border: 1px solid var(--color-code-border);
+    color: inherit;
+    font-weight: inherit;
 }
 code {
     display: inline-block;
@@ -20,9 +27,8 @@ code {
     font-family: 'Menlo', monospace;
     font-size: 80%;
 
-    background-color: var(--color-code-bg) !important;
-    border-radius: 0.3em;
-    border: 1px solid var(--color-code-border);
+    font-weight: 500;
+    color: var(--color-code-inline);
 }
 // Inline code is when there is not pre > code
 pre:not(:has(code)) {
@@ -31,10 +37,29 @@ pre:not(:has(code)) {
 
 table {
     border-spacing: 0;
+    border-collapse: collapse;
 }
 td {
-    padding: 0.5em;
+    padding: 0.5em 1em;
+    border: 1px solid var(--color-table-border);
 }
-tr:nth-child(odd) {
-    background-color: var(--color-code-bg);
+tr:nth-child(even) {
+    background-color: var(--color-table-bg);
+}
+th {
+    padding: 0.5em 1em;
+    border: 1px solid var(--color-table-border);
+    background-color: var(--color-table-bg);
+}
+
+blockquote {
+    margin: 0;
+    margin-left: 1em;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+blockquote > .paragraph {
+    border-left: 0.3em solid var(--color-code-border);
+    padding-left: 0.5em;
+    margin: 0.2em 0;
 }

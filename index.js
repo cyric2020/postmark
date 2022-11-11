@@ -140,9 +140,7 @@ exports.markdownToHtml = function (markdown, theme) {
     var parseTree = parse(markdown);
     var html = htmlOutput(parseTree);
 
-    // add required css
-    var css = fs.readFileSync(__dirname + '/style.css', 'utf8');
-    html = '<style>' + css + '</style>' + html;
+    // add required files
     html += '<link rel="stylesheet" href="https://unpkg.com/katex@0.12.0/dist/katex.min.css" />';
     html += `<link rel="stylesheet"href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/${theme}.min.css">`;
     return html;
