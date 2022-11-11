@@ -1,0 +1,15 @@
+{
+  "name": "postmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/Cyric2020/postmark"
+  },
+  "author": "Cyric2020",
+  "license": "ISC"
+}

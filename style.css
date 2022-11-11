@@ -1,0 +1,40 @@
+@import url('https://fonts.cdnfonts.com/css/menlo');
+
+:root{
+    --color-code-bg: #f5f5f5;
+    --color-code-border: #e5e5e5;
+    --color-code-inline: #e9c46a;
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+pre > code {
+    padding: 0.3em 0.5em !important;
+    width: 100%;
+}
+code {
+    display: inline-block;
+    padding: 0.1em 0.2em;
+    font-family: 'Menlo', monospace;
+    font-size: 80%;
+
+    background-color: var(--color-code-bg) !important;
+    border-radius: 0.3em;
+    border: 1px solid var(--color-code-border);
+}
+// Inline code is when there is not pre > code
+pre:not(:has(code)) {
+    color: red;
+}
+
+table {
+    border-spacing: 0;
+}
+td {
+    padding: 0.5em;
+}
+tr:nth-child(odd) {
+    background-color: var(--color-code-bg);
+}
