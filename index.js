@@ -149,6 +149,6 @@ exports.markdownToHtml = function (markdown, theme) {
 };
 
 exports.render = function (markdown, theme) {
-    var html = this.markdownToHtml(markdown);
+    var html = this.markdownToHtml(markdown, theme);
     return html;
 };
