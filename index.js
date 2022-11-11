@@ -1,4 +1,3 @@
-const fs = require('fs');
 const SimpleMarkdown = require('@khanacademy/simple-markdown');
 const katex = require('katex');
 const hljs = require('highlight.js');
