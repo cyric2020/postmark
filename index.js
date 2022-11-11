@@ -112,7 +112,6 @@ var dotpointRule = {
             parent = parent.parent;
         }
         return '<dotpoint indent="' + indent + '">' + recurseOutput(node.content) + '</dotpoint>';
-        // return '<li>' + recurseOutput(node.content) + '</li>';
     },
 }
 
