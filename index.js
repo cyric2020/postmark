@@ -55,7 +55,7 @@ class Postmark {
 
     parse(source) {
         var blockSource = source + "\n\n";
-        return rawBuildParser(blockSource, {inline: false});
+        return this.rawBuildParser(blockSource, {inline: false});
     }
     
     markdownToHtml(markdown) {
