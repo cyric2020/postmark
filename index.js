@@ -149,7 +149,7 @@ function render(markdown, theme) {
     return html;
 }
 
-export default {
-    render,
-    markdownToHtml,
+module.exports = {
+    render: render,
+    markdownToHtml: markdownToHtml,
 };
