@@ -71,7 +71,7 @@ class Postmark {
     }
 
     render(markdown) {
-        this.markdownToHtml(markdown);
+        return this.markdownToHtml(markdown);
     }
 }
 
