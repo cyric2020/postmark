@@ -1,6 +1,6 @@
-import SimpleMarkdown from '@khanacademy/simple-markdown';
-import katex from 'katex';
-import hljs from 'highlight.js';
+const SimpleMarkdown = require('@khanacademy/simple-markdown');
+const katex = require('katex');
+const hljs = require('highlight.js');
 
 var latexInlineRule = {
     order: SimpleMarkdown.defaultRules.text.order,
@@ -133,21 +133,6 @@ var parse = function(source) {
     return rawBuildParser(blockSource, {inline: false});
 };
 var htmlOutput = SimpleMarkdown.outputFor(rules, 'html');
-
-// exports.markdownToHtml = function (markdown, theme) {
-//     var parseTree = parse(markdown);
-//     var html = htmlOutput(parseTree);
-
-//     // add required files
-//     html += '<link rel="stylesheet" href="https://unpkg.com/katex@0.12.0/dist/katex.min.css" />';
-//     html += `<link rel="stylesheet"href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/${theme}.min.css">`;
-//     return html;
-// };
-
-// exports.render = function (markdown, theme) {
-//     var html = this.markdownToHtml(markdown, theme);
-//     return html;
-// };
 
 function markdownToHtml(markdown, theme) {
     var parseTree = parse(markdown);
