@@ -208,3 +208,7 @@ var dotpointRule = {
     // parse: parse,
     // markdownToHtml: markdownToHtml,
 // };
+
+module.exports = {
+    Postmark: Postmark,
+}
