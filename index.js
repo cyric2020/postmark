@@ -2,6 +2,79 @@ const SimpleMarkdown = require('@khanacademy/simple-markdown');
 const katex = require('katex');
 const hljs = require('highlight.js');
 
+/* example settings
+{
+    theme: 'default',
+    enableLatex: true,
+    enableHighlight: true,
+    includeKatexCss: true,
+    includeHighlightCss: true,
+}
+*/
+
+// var rules = {
+//     ...SimpleMarkdown.defaultRules,
+//     // Add your custom rules here
+//     latexBlock: latexBlockRule,
+//     latexInline: latexInlineRule,
+//     quadHeader: quadHeaderRule,
+//     codeBlock: codeBlockRule,
+//     filename: filenameRule,
+//     dotpoint: dotpointRule,
+// }
+
+// var rawBuildParser = SimpleMarkdown.parserFor(rules);
+
+// var htmlOutput = SimpleMarkdown.outputFor(rules, 'html');
+
+class Postmark {
+    constructor(settings) {
+        this.theme = settings.theme || 'default';
+        this.enableLatex = settings.enableLatex || false;
+        this.enableHighlight = settings.enableHighlight || false;
+        this.enableCodeBlock = settings.enableCodeBlock || false;
+        this.enableFilename = settings.enableFilename || false;
+        this.includeKatexCss = settings.includeKatexCss || false;
+        this.includeHighlightCss = settings.includeHighlightCss || false;
+
+        this.rules = {
+            ...SimpleMarkdown.defaultRules,
+
+            // Add custom rules here
+            latexBlock: (this.enableLatex) ? latexBlockRule : null,
+            latexInline: (this.enableLatex) ? latexInlineRule : null,
+            quadHeader: quadHeaderRule,
+            codeBlock: (this.enableCodeBlock) ? codeBlockRule : null,
+            filename: (this.enableFilename) ? filenameRule : null,
+            dotpoint: dotpointRule,
+        }
+
+        this.rawBuildParser = SimpleMarkdown.parserFor(rules);
+        this.htmlOutput = SimpleMarkdown.outputFor(rules, 'html');
+    }
+
+    parse(source) {
+        var blockSource = source + "\n\n";
+        return rawBuildParser(blockSource, {inline: false});
+    }
+    
+    markdownToHtml(markdown) {
+        var parseTree = this.parse(markdown);
+        var html = this.htmlOutput(parseTree);
+    
+        // add required files
+        if(this.includeKatexCss) {
+            html += '<link rel="stylesheet" href="https://unpkg.com/katex@0.12.0/dist/katex.min.css" />';
+        }
+        html += `<link rel="stylesheet"href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/${theme}.min.css">`;
+        return html;
+    }
+
+    render(markdown) {
+        this.markdownToHtml(markdown);
+    }
+}
+
 var latexInlineRule = {
     order: SimpleMarkdown.defaultRules.text.order,
     match: function(source) {
@@ -115,41 +188,23 @@ var dotpointRule = {
     },
 }
 
-var rules = {
-    ...SimpleMarkdown.defaultRules,
-    // Add your custom rules here
-    latexBlock: latexBlockRule,
-    latexInline: latexInlineRule,
-    quadHeader: quadHeaderRule,
-    codeBlock: codeBlockRule,
-    filename: filenameRule,
-    dotpoint: dotpointRule,
-}
+// var rules = {
+//     ...SimpleMarkdown.defaultRules,
+//     // Add your custom rules here
+//     latexBlock: latexBlockRule,
+//     latexInline: latexInlineRule,
+//     quadHeader: quadHeaderRule,
+//     codeBlock: codeBlockRule,
+//     filename: filenameRule,
+//     dotpoint: dotpointRule,
+// }
 
-var rawBuildParser = SimpleMarkdown.parserFor(rules);
+// var rawBuildParser = SimpleMarkdown.parserFor(rules);
 
-var parse = function(source) {
-    var blockSource = source + "\n\n";
-    return rawBuildParser(blockSource, {inline: false});
-};
-var htmlOutput = SimpleMarkdown.outputFor(rules, 'html');
+// var htmlOutput = SimpleMarkdown.outputFor(rules, 'html');
 
-function markdownToHtml(markdown, theme) {
-    var parseTree = parse(markdown);
-    var html = htmlOutput(parseTree);
-
-    // add required files
-    html += '<link rel="stylesheet" href="https://unpkg.com/katex@0.12.0/dist/katex.min.css" />';
-    html += `<link rel="stylesheet"href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/${theme}.min.css">`;
-    return html;
-}
-
-function render(markdown, theme) {
-    var html = this.markdownToHtml(markdown, theme);
-    return html;
-}
-
-module.exports = {
-    render: render,
-    markdownToHtml: markdownToHtml,
-};
+// module.exports = {
+    // render: render,
+    // parse: parse,
+    // markdownToHtml: markdownToHtml,
+// };
