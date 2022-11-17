@@ -49,8 +49,8 @@ class Postmark {
             dotpoint: dotpointRule,
         }
 
-        this.rawBuildParser = SimpleMarkdown.parserFor(rules);
-        this.htmlOutput = SimpleMarkdown.outputFor(rules, 'html');
+        this.rawBuildParser = SimpleMarkdown.parserFor(this.rules);
+        this.htmlOutput = SimpleMarkdown.outputFor(this.rules, 'html');
     }
 
     parse(source) {
