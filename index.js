@@ -66,7 +66,7 @@ class Postmark {
         if(this.includeKatexCss) {
             html += '<link rel="stylesheet" href="https://unpkg.com/katex@0.12.0/dist/katex.min.css" />';
         }
-        html += `<link rel="stylesheet"href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/${this.theme}.min.css">`;
+        html += `<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/${this.theme}.min.css">`;
         return html;
     }
 

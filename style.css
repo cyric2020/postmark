@@ -30,6 +30,25 @@ code {
     font-weight: 500;
     color: var(--color-code-inline);
 }
+div.paragraph > filename {
+    display: block;
+    background-color: var(--color-code-bg);
+    border-top-left-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+    width: 100%;
+    padding: 0.3em 0.5em;
+    border: 1px solid var(--color-code-border);
+    /* border-bottom: none; */
+    font-weight: 600;
+}
+div.paragraph > filename + pre {
+    margin-top: 0;
+}
+div.paragraph > filename + pre > code {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
+}
 // Inline code is when there is not pre > code
 pre:not(:has(code)) {
     color: red;
