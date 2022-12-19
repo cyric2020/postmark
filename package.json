@@ -18,5 +18,9 @@
     "@khanacademy/simple-markdown": "^0.8.5",
     "highlight.js": "^11.6.0",
     "katex": "^0.16.3"
+  },
+  "exports": {
+    "import": "./index.mjs",
+    "require": "./index.cjs"
   }
 }
