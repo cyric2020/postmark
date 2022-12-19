@@ -152,7 +152,7 @@ var codeBlockRule = {
 var filenameRule = {
     order: SimpleMarkdown.defaultRules.text.order - 0.1,
     match: function(source) {
-        return source.match(/^\@\(([\s\S]+)\)/);
+        return source.match(/^\@\(((.*?)+)\)/);
     },
     parse: function(capture, recurseParse, state) {
         return {
