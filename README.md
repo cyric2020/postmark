@@ -25,7 +25,7 @@ const html = postmark.parse(markdown, theme);
 
 ## Themes
 
-Postmark comes with a few themes built in, but you can also use any of the [highlight.js themes](https://highlightjs.org/static/demo/).
+Postmark comes with a few themes built in, but you can also use any of the [highlight.js themes](https://highlightjs.org/demo/).
 
 ## Features
 
