@@ -1,4 +1,6 @@
-import SimpleMarkdown from '@khanacademy/simple-markdown';
+// import SimpleMarkdown from '@khanacademy/simple-markdown';
+import {default as sm} from '@khanacademy/simple-markdown';
+const SimpleMarkdown = sm.default || sm; 
 import katex from 'katex';
 import hljs from 'highlight.js';
 

@@ -1,7 +1,7 @@
 {
   "name": "postmark-md-renderer",
-  "version": "1.0.7",
-  "description": "",
+  "version": "1.1.0",
+  "description": "A modified version of Simple-Markdown that can render Markdown to HTML with KaTeX and Code support.",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -16,7 +16,7 @@
   "author": "Cyric2020",
   "license": "ISC",
   "dependencies": {
-    "@khanacademy/simple-markdown": "^0.8.5",
+    "@khanacademy/simple-markdown": "^2.0.0",
     "highlight.js": "^11.6.0",
     "katex": "^0.16.3",
     "open": "^10.0.1"

@@ -1,3 +1,47 @@
+$\Omega \cdots 10$
+
+# ELEC2400 Electronic Devices and Circuits
+
+## Lecture 1 – Circuit Theory Revision
+
+**Course Details:**
+- Course Name: ELEC2400
+- Instructor: Dr. Hui Ma
+- Academic Year: Semester 1, 2025
+- Visual Elements:
+  - Purple horizontal line across the top with UQ logo.
+
+### Key Concepts
+
+#### Passive Reference Configuration
+
+**Definition:** The passive reference configuration is a fundamental concept where current enters the positive polarity of the voltage. This ensures that energy flow directionality aligns correctly for power calculations.
+- **Slide Reference:** Slide 5
+- Example: For a current source $ I = 5 \text{A} $ in series with a 10V source, $ P = V \cdot I = 50 \text{W} $.
+
+#### Equations
+$$ P = V \cdot I $$ (Slide 5)
+- Positive power indicates energy absorption by the element; negative power implies it supplies energy.
+
+#### Case Studies
+
+**Configuration A (Slide 6):**
+- **Circuit:** Current source of 5A, voltage source of 10V.
+- **Power Calculation:** $ P = V \cdot I = 10 \text{V} \times 5\text{A} = 50 \text{W} $.
+
+**Configuration B (Slide 6):**
+- **Circuit:** Current source of -5A, voltage source of 10V.
+- **Power Calculation:** $ P = V \cdot I = 10 \text{V} \times (-5\text{A}) = -50 \text{W} $.
+
+**Configuration C (Slide 6):**
+- **Circuit:** Current source of 5A, voltage source of -10V.
+- **Power Calculation:** $ P = V \cdot I = (-10 \text{V}) \times 5\text{A} = -50 \text{W} $.
+
+### Diagrams
+
+- Slide 6: Circuit with a current source in series with a voltage source, demonstrating the passive reference configuration. Arrows indicate current flow and polarity.
+
+
 @(servers.txt)
 ```
 # servers

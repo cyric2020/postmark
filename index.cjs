@@ -8,6 +8,9 @@ var _simpleMarkdown = _interopRequireDefault(require("@khanacademy/simple-markdo
 var _katex = _interopRequireDefault(require("katex"));
 var _highlight = _interopRequireDefault(require("highlight.js"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+// import SimpleMarkdown from '@khanacademy/simple-markdown';
+
+const SimpleMarkdown = _simpleMarkdown.default.default || _simpleMarkdown.default;
 /* example settings
 {
     theme: 'default',
@@ -32,7 +35,7 @@ class Postmark {
     this.includeKatexCss = settings.includeKatexCss || false;
     this.includeHighlightCss = settings.includeHighlightCss || false;
     this.rules = {
-      ..._simpleMarkdown.default.defaultRules,
+      ...SimpleMarkdown.defaultRules,
       // Add custom rules here
       latexBlock: this.enableLatex ? latexBlockRule : null,
       latexInline: this.enableLatex ? latexInlineRule : null,
@@ -50,8 +53,8 @@ class Postmark {
       subscript: subscriptRule,
       calloutBlock: calloutBlockRule
     };
-    this.rawBuildParser = _simpleMarkdown.default.parserFor(this.rules);
-    this.htmlOutput = _simpleMarkdown.default.outputFor(this.rules, 'html');
+    this.rawBuildParser = SimpleMarkdown.parserFor(this.rules);
+    this.htmlOutput = SimpleMarkdown.outputFor(this.rules, 'html');
   }
   parse(source) {
     var blockSource = source + "\n\n";
@@ -65,7 +68,7 @@ class Postmark {
 
     // add required files
     if (this.includeKatexCss) {
-      html += '<link rel="stylesheet" href="https://unpkg.com/katex@0.12.0/dist/katex.min.css" />';
+      html += '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" />';
     }
     html += `<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/${this.theme}.min.css">`;
     return html;
@@ -75,7 +78,7 @@ class Postmark {
   }
 }
 var latexInlineRule = {
-  order: _simpleMarkdown.default.defaultRules.text.order,
+  order: SimpleMarkdown.defaultRules.text.order,
   match: function (source) {
     // Match anything between $ and $
     return source.match(/^\$([^$]+)\$/);
@@ -97,7 +100,7 @@ var latexInlineRule = {
   }
 };
 var latexBlockRule = {
-  order: _simpleMarkdown.default.defaultRules.text.order - 1,
+  order: SimpleMarkdown.defaultRules.text.order - 1,
   match: function (source) {
     // Match anything between $$ and $$
     return source.match(/^\$\$([^$]+)\$\$/);
@@ -114,7 +117,7 @@ var latexBlockRule = {
   }
 };
 var quadHeaderRule = {
-  order: _simpleMarkdown.default.defaultRules.text.order,
+  order: SimpleMarkdown.defaultRules.text.order,
   match: function (source) {
     return source.match(/^####(.*)/);
   },
@@ -128,7 +131,7 @@ var quadHeaderRule = {
   }
 };
 var quintHeaderRule = {
-  order: _simpleMarkdown.default.defaultRules.text.order - 0.1,
+  order: SimpleMarkdown.defaultRules.text.order - 0.1,
   match: function (source) {
     return source.match(/^#####(.*)/);
   },
@@ -143,7 +146,7 @@ var quintHeaderRule = {
 };
 var codeBlockRule = {
   // override the default code block rule
-  order: _simpleMarkdown.default.defaultRules.codeBlock.order,
+  order: SimpleMarkdown.defaultRules.codeBlock.order,
   // order: SimpleMarkdown.defaultRules.text.order - 0.1,
   match: function (source) {
     return source.match(/^```([a-z]+)?\n([\s\S]+?)\n```/);
@@ -184,7 +187,7 @@ var codeBlockRule = {
 // }
 
 var filenameRule = {
-  order: _simpleMarkdown.default.defaultRules.codeBlock.order + 0.1,
+  order: SimpleMarkdown.defaultRules.codeBlock.order + 0.1,
   match: function (source) {
     return source.match(/^\@\(((.*?)+)\)\n\```([a-z]+)?\n([\s\S]+?)\n```/);
   },
@@ -207,7 +210,7 @@ var filenameRule = {
   }
 };
 var dotpointRule = {
-  order: _simpleMarkdown.default.defaultRules.text.order - 1,
+  order: SimpleMarkdown.defaultRules.text.order - 1,
   match: function (source) {
     return source.match(/^\-\s(.*)/);
   },
@@ -230,7 +233,7 @@ var dotpointRule = {
   }
 };
 var typographicReplacementEnRule = {
-  order: _simpleMarkdown.default.defaultRules.text.order - 0.5,
+  order: SimpleMarkdown.defaultRules.text.order - 0.5,
   match: function (source) {
     return source.match(/^--/);
   },
@@ -244,7 +247,7 @@ var typographicReplacementEnRule = {
   }
 };
 var typographicReplacementEmRule = {
-  order: _simpleMarkdown.default.defaultRules.text.order - 0.5,
+  order: SimpleMarkdown.defaultRules.text.order - 0.5,
   match: function (source) {
     return source.match(/^---/);
   },
@@ -258,7 +261,7 @@ var typographicReplacementEmRule = {
   }
 };
 var multilineBlockQuoteRule = {
-  order: _simpleMarkdown.default.defaultRules.blockQuote.order,
+  order: SimpleMarkdown.defaultRules.blockQuote.order,
   match: function (source) {
     return source.match(/^\>(.*)/);
   },
@@ -272,7 +275,7 @@ var multilineBlockQuoteRule = {
   }
 };
 var imageWithDimensionsRule = {
-  order: _simpleMarkdown.default.defaultRules.image.order - 0.1,
+  order: SimpleMarkdown.defaultRules.image.order - 0.1,
   match: function (source) {
     return source.match(/^\!\[(.*?)\]\((.*?)\)\{(.*)\}/);
   },
@@ -288,7 +291,7 @@ var imageWithDimensionsRule = {
   }
 };
 var highlightRule = {
-  order: _simpleMarkdown.default.defaultRules.text.order - 0.1,
+  order: SimpleMarkdown.defaultRules.text.order - 0.1,
   match: function (source) {
     return source.match(/^\=\=(.*?)\=\=/);
   },
@@ -302,7 +305,7 @@ var highlightRule = {
   }
 };
 var superscriptRule = {
-  order: _simpleMarkdown.default.defaultRules.text.order - 0.1,
+  order: SimpleMarkdown.defaultRules.text.order - 0.1,
   match: function (source) {
     return source.match(/^\^(.*?)\^/);
   },
@@ -316,7 +319,7 @@ var superscriptRule = {
   }
 };
 var subscriptRule = {
-  order: _simpleMarkdown.default.defaultRules.text.order - 0.1,
+  order: SimpleMarkdown.defaultRules.text.order - 0.1,
   match: function (source) {
     return source.match(/^_(.*?)_/);
   },
@@ -331,7 +334,7 @@ var subscriptRule = {
 };
 var calloutBlockRule = {
   // order: SimpleMarkdown.defaultRules.text.order - 0.1,
-  order: _simpleMarkdown.default.defaultRules.codeBlock.order + 0.4,
+  order: SimpleMarkdown.defaultRules.codeBlock.order + 0.4,
   match: function (source) {
     return source.match(/^:::\s\[([\s\S]+?)\]\s\(([\s\S]+?)\)\s\{([\s\S]+?)\}\n([\s\S]+?)\n:::/);
   },
