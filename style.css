@@ -31,6 +31,7 @@ code {
     color: var(--color-code-inline);
 }
 div.paragraph > filename {
+/* filename { */
     display: block;
     background-color: var(--color-code-bg);
     border-top-left-radius: 0.3em;
@@ -42,9 +43,11 @@ div.paragraph > filename {
     font-weight: 600;
 }
 div.paragraph > filename + pre {
+/* filename + pre { */
     margin-top: 0;
 }
 div.paragraph > filename + pre > code {
+/* filename + pre > code { */
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-top: none;

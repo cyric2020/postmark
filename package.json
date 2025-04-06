@@ -1,12 +1,13 @@
 {
-  "name": "postmark",
-  "version": "1.0.0",
+  "name": "postmark-md-renderer",
+  "version": "1.0.7",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify --require postmark --outfile file.js"
+    "build": "browserify --require postmark --outfile file.js",
+    "convert": "npx babel index.mjs --out-file index.cjs"
   },
   "repository": {
     "type": "git",
@@ -17,10 +18,17 @@
   "dependencies": {
     "@khanacademy/simple-markdown": "^0.8.5",
     "highlight.js": "^11.6.0",
-    "katex": "^0.16.3"
+    "katex": "^0.16.3",
+    "open": "^10.0.1"
   },
   "exports": {
     "import": "./index.mjs",
     "require": "./index.cjs"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.7",
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
+    "@babel/preset-react": "^7.25.7"
   }
 }
